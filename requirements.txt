@@ -1,0 +1,6 @@
+cellpose
+opencv-python-headless
+numpy
+matplotlib
+pytest
+pandas
