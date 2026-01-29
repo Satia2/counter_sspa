@@ -24,12 +24,14 @@ def pre_process_crystal_violet(immagine_rgb):
     Ottimizza l'immagine per il Crystal Violet.
     Estrae il canale verde per massimizzare il contrasto delle colonie viola.
     """
-    # Se l'immagine è BGR (standard OpenCV), estraiamo il canale 1 (Green)
-    # Se è RGB (standard Cellpose/PIL), è sempre il canale 1
-    canale_verde = immagine_rgb[:, :, 1]
-    
-    # Opzionale: CLAHE (Contrast Limited Adaptive Histogram Equalization)
-    # Serve se l'illuminazione del pozzetto non è uniforme
+    # Se l'immagine ha 3 dimensioni (H, W, Canali)
+    if len(immagine_rgb.shape) == 3:
+        # Estraiamo il canale verde
+        canale_verde = immagine_rgb[:, :, 1]
+    else:
+        # È già in scala di grigi
+        canale_verde = immagine_rgb
+
     clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
     img_contrast = clahe.apply(canale_verde)
     

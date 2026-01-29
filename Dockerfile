@@ -8,8 +8,11 @@ ENV PYTHONUNBUFFERED=1
 # 3. Installiamo le dipendenze di sistema necessarie per OpenCV
 # libgl1 e libglib2.0 sono fondamentali per far girare cv2 in Docker
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
+    libsm6 \
+    libxext6 \
+    libxrender1 \
     && rm -rf /var/lib/apt/lists/*
 
 # 4. Creiamo la directory di lavoro
