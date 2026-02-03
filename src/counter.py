@@ -1,4 +1,5 @@
 import numpy as np
+import torch
 from cellpose import models
 from src.utils import pre_process_crystal_violet, crea_maschera_pozzetto
 
@@ -8,7 +9,8 @@ def conta_colonie(immagine_rgb, diametro=21, area_minima=272):
     img_final = crea_maschera_pozzetto(img_gray)
     
     # 2. Caricamento modello (Uso di CellposeModel per maggiore stabilità)
-    model = models.CellposeModel(model_type='cyto', gpu=False)
+    usa_gpu = torch.cuda.is_available()
+    model = models.CellposeModel(model_type='cyto', gpu=usa_gpu)
     
     # 3. Segmentazione
     # CellposeModel.eval restituisce: masks, flows, styles
