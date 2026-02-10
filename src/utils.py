@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-def crea_maschera_pozzetto(immagine, margine=0.88):
+def crea_maschera_pozzetto(immagine, margine=0.85):
     """
     Crea un cerchio nero fuori dal pozzetto per evitare falsi positivi sui bordi.
     margine: 0.88 è il valore ideale per tagliare i riflessi della plastica 

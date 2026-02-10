@@ -14,10 +14,10 @@ def conta_colonie(immagine_rgb, model_to_use, diametro=21, area_minima=50):
     # 3. Segmentazione ad alta sensibilità
     masks, flows, styles = model_to_use.eval(
         img_final, 
-        diameter=diametro, 
+        diameter=21, 
         channels=[0, 0],
-        flow_threshold=0.8,       # Accetta anche forme irregolari
-        cellprob_threshold=-4.0   # Massima sensibilità per colonie sbiadite
+        flow_threshold=0.4,       # Accetta anche forme irregolari
+        cellprob_threshold=-1.5   # Massima sensibilità per colonie sbiadite
     )
     
     # 4. Filtro Area
