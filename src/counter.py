@@ -25,10 +25,10 @@ def conta_colonie(immagine_rgb, diametro=21, area_minima=50):
     # Usiamo il modello pre-caricato invece di inizializzarne uno nuovo ogni volta
     masks, flows, styles = _model_cache.eval(
         img_final, 
-        diameter=diametro, 
+        diameter=21, 
         channels=[0, 0],
-        flow_threshold=0.6,      # Più tollerante sulle forme irregolari
-        cellprob_threshold=-2.0  # Molto più sensibile al segnale debole
+        flow_threshold=0.8,      # Più tollerante sulle forme irregolari
+        cellprob_threshold=-4.0  # Molto più sensibile al segnale debole
     )
     
     # 3. Filtro Area
