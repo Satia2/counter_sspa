@@ -30,20 +30,4 @@ jobs:
         run: |
           export PYTHONPATH=$PYTHONPATH:.
           pytest tests -v
-
-      - name: Run Analysis
-        run: |
-          export PYTHONPATH=$PYTHONPATH:.
-          mkdir -p results
-          yes | python run_analysis.py 
-          
-      - name: Upload Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: analisi-colonie-risultati
-          path: |
-            results/
-            *.png
-  
-        if: always() 
       
