@@ -9,7 +9,7 @@ def main():
     output_dir = "results"
     os.makedirs(output_dir, exist_ok=True)
     
-    model = models.Cellpose(gpu=False, model_type='cyto')
+    model = models.CellposeModel(gpu=False, model_type='cyto')
     
     results = []
     
