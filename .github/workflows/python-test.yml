@@ -30,3 +30,22 @@ jobs:
         run: |
           export PYTHONPATH=$PYTHONPATH:.
           pytest tests -v
+
+      - name: Run Analysis
+        run: |
+          export PYTHONPATH=$PYTHONPATH:.
+          # Crea la cartella results se non esiste
+          mkdir -p results
+          # Esegue lo script che abbiamo creato
+          python run_analysis.py 
+          
+      - name: Upload Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: analisi-colonie-risultati
+          path: |
+            results/
+            *.png
+  
+        if: always() 
+      
