@@ -1,6 +1,7 @@
 import os
 import cv2
 import pandas as pd
+import logging
 from cellpose import models
 from src.counter import conta_colonie
 
@@ -9,7 +10,7 @@ def main():
     output_dir = "results"
     os.makedirs(output_dir, exist_ok=True)
     
-    model = models.CellposeModel(gpu=False, model_type='cyto')
+    model = models.CellposeModel(gpu=False, model_type='cyto', device=None)
     
     results = []
     
